@@ -1,0 +1,8 @@
+{
+  "name": "webpack-lsy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nooboy/webpack-lsy.git",
+  "author": "lsyimpr@163.com",
+  "license": "MIT"
+}
