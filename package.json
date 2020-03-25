@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/nooboy/webpack-lsy.git",
   "author": "lsyimpr@163.com",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.lsy.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
 }
