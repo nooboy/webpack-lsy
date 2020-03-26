@@ -8,7 +8,7 @@ const OptimizeCss = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/pages/Index/index.js',
   output: {
     filename: 'bundle.[hash:8].js',
@@ -18,7 +18,7 @@ module.exports = {
     host: '127.0.0.1',
     progress: true,
     contentBase: './dist',
-    open: true,
+    // open: true,
     inline: true,
     port: 3000,
     historyApiFallback: true,
@@ -52,6 +52,26 @@ module.exports = {
           'sass-loader',
         ]
       },
+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src')],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [
+                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+                ["@babel/plugin-transform-runtime"],
+              ]
+            }
+          }
+        ]
+      },
+
     ]
   },
 
@@ -79,11 +99,11 @@ module.exports = {
   optimization: {       // 优化项
     minimizer: [
       new OptimizeCss(),
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
-      })
+      // new UglifyJsPlugin({
+      //   cache: true,
+      //   parallel: true,
+      //   sourceMap: true
+      // })
     ]
   }
 
