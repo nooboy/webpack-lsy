@@ -93,7 +93,23 @@ module.exports = {
       // {
       //   test: require.resolve('jquery'),
       //   use: 'expose-loader?$$$'
-      // }
+      // },
+
+      {
+        test: /\.(jpg|jpeg|png|svg|gif|bmp|webp)/,
+        // use: 'file-loader',
+        use: {
+          loader: 'url-loader',   // 把图片转为 base64 位
+          options: {
+            limit: 10,
+          }
+        }
+      },
+
+      {
+        test: /\.html$/,
+        use: 'html-loader',
+      }
 
     ]
   },
@@ -114,7 +130,7 @@ module.exports = {
       }
     }),
     new MiniCssExtracPlugin({
-      filename: 'css/bundle.[hash:8].css'
+      filename: 'bundle.[hash:8].css'
     })
 
   ],

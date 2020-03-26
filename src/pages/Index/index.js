@@ -58,3 +58,13 @@ console.log('includes: ', ['a', 'b', 'c'].includes('c'));
 
 // var a = 3;     // eslint提示
 // delete a;
+
+// 打包图片
+import husky1 from '../../static/img/husky-1.jpg';
+const img = new Image();
+img.src = husky1;   // dist 目录不会生成该图片文件
+document.body.appendChild(img);
+
+const picDiv = document.createElement('div');
+picDiv.className = 'test-pic';
+document.body.appendChild(picDiv);
