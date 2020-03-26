@@ -1,5 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtracPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
+
+// 对css进行压缩优化，使用这个后，默认情况下js不会被压缩了，需要uglifyjs-webpack-plugin插件压缩js
+const OptimizeCss = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -30,7 +36,18 @@ module.exports = {
               insert: 'head',
             }
           },
+          MiniCssExtracPlugin.loader,
           'css-loader',
+          // 'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                autoprefixer(),
+              ]
+            }
+          },
           'less-loader',
           'sass-loader',
         ]
@@ -53,6 +70,21 @@ module.exports = {
         useShortDoctype: true
       }
     }),
+    new MiniCssExtracPlugin({
+      filename: 'css/bundle.[hash:8].css'
+    })
 
-  ]
+  ],
+
+  optimization: {       // 优化项
+    minimizer: [
+      new OptimizeCss(),
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      })
+    ]
+  }
+
 }
