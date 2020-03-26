@@ -23,6 +23,9 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     compress: true,
+  },  
+  externals: {
+    // 'jquery': 'jQuery'
   },
 
   module: {
@@ -85,6 +88,12 @@ module.exports = {
           }
         ]
       },
+
+      // 暴露第三方模块到全局变量，这种方式太费事，不建议使用
+      // {
+      //   test: require.resolve('jquery'),
+      //   use: 'expose-loader?$$$'
+      // }
 
     ]
   },
