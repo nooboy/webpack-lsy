@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.hello-world {
+  color: red;
+  transform: rotate(45deg);
+  text-align: center;
+  margin: 40px 0;
+}
+

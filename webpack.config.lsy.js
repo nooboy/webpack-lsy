@@ -59,6 +59,20 @@ module.exports = {
         include: [path.resolve(__dirname, 'src')],
         use: [
           {
+            loader: 'eslint-loader',
+            options: {
+              enforce: 'pre',
+            }
+          }
+        ]
+      },
+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src')],
+        use: [
+          {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],

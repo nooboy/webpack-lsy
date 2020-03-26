@@ -54,5 +54,7 @@ let g = gen();
 console.log(g.next());
 console.log(g.next());// includes 语法测试：
 
-// console.log('includes: ', ['a', 'b', 'c'].includes('c'));
+console.log('includes: ', ['a', 'b', 'c'].includes('c'));
 
+// var a = 3;     // eslint提示
+// delete a;
