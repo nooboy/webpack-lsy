@@ -6,10 +6,13 @@
   "author": "lsyimpr@163.com",
   "license": "MIT",
   "scripts": {
+    "dev": "webpack-dev-server --color --config webpack.config.lsy.js",
     "build": "webpack --config webpack.config.lsy.js"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^4.0.1",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
