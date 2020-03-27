@@ -13,6 +13,7 @@ module.exports = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.resolve(__dirname,  'dist'),
+    publicPath: 'http://lsy.com',
   },
   devServer: {
     host: '127.0.0.1',
@@ -102,6 +103,8 @@ module.exports = {
           loader: 'url-loader',   // 把图片转为 base64 位
           options: {
             limit: 10,
+            outputPath: '/img/',
+            publicPath: 'http://lsypic.com/img',  
           }
         }
       },
@@ -120,17 +123,17 @@ module.exports = {
       template: 'template.html',
       filename: 'index.html',
       hash: true,
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,       
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true
-      }
+      // minify: {    // 先不压缩html
+      //   collapseWhitespace: true,
+      //   removeComments: true,
+      //   removeRedundantAttributes: true,       
+      //   removeScriptTypeAttributes: true,
+      //   removeStyleLinkTypeAttributes: true,
+      //   useShortDoctype: true
+      // }
     }),
     new MiniCssExtracPlugin({
-      filename: 'bundle.[hash:8].css'
+      filename: 'css/bundle.[hash:8].css',      // 注意 css 前边没有斜线
     })
 
   ],
