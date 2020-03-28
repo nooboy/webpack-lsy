@@ -36,13 +36,13 @@ module.exports = {
     historyApiFallback: true,
     compress: true,
     // 1. 跨域：代理
-    // proxy: {
-    ////   '/api/list': 'http://localhost:3001',
-    //   '/api':{
-    //     target:'http://localhost:3001',
-    //     pathRewrite: { '/api':'' } // 把/api 替换为空
-    //   }
-    // },
+    proxy: {
+      '/api/list': 'http://localhost:3001',
+      // '/api':{
+      //   target: 'http://localhost:3001',
+      //   pathRewrite: { '/api':'' } // 把/api 替换为空
+      // }
+    },
     // 2. 跨域：模拟数据
     // before (app) {
     //   app.get('/api/list', (req, res) => {
@@ -52,6 +52,18 @@ module.exports = {
   },  
   externals: {
     // 'jquery': 'jQuery'
+  },
+
+  resolve: {
+    modules: [path.resolve(__dirname, "src"), "node_modules"],  // 告诉 webpack 解析模块时应该搜索的目录
+    extensions: ['.js', '.jsx', '.css', '.json'],   // 自动解析确定的扩展
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+      '@pages': path.resolve(__dirname, 'pages'),
+      '@common': path.resolve(__dirname, 'src/common'),
+      '@static': path.resolve(__dirname, 'src/static'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+    }
   },
 
   module: {

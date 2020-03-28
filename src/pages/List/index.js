@@ -1,5 +1,10 @@
-import insertElement from '../../utils/insert-element.js';
-import ajax from '../../utils/ajax';
+import insertElement from '@utils/insert-element.js';
+import ajax from '@utils/ajax';
+
+import { printMe } from '@utils/print-me.js';
+import { printHer } from '@utils/print-her';
+printMe();
+printHer();
 
 insertElement({
   element: 'div',
@@ -12,3 +17,4 @@ insertElement({
 ajax({
   url: '/api/list'
 });
+
