@@ -9,9 +9,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/pages/Index/index.js',
+  // entry: './src/pages/Index/index.js',      // 单页入口
+  entry: {
+    index: './src/pages/Index/index.js',
+    list: './src/pages/List/index.js',
+  },
   output: {
-    filename: 'bundle.[hash:8].js',
+    // filename: 'bundle.[hash:8].js',     // 单页面
+    filename: '[name].[hash:8].js',                       // 多页面应用不能再用指定的名称
     path: path.resolve(__dirname,  'dist'),
     publicPath: 'http://lsy.com',
   },
@@ -104,7 +109,7 @@ module.exports = {
           options: {
             limit: 10,
             outputPath: '/img/',
-            publicPath: 'http://lsypic.com/img',  
+            publicPath: 'http://lsypic.com/img',  // 指定图片服务器，先build下
           }
         }
       },
@@ -119,9 +124,10 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'lsyApp',
+      title: '首页',
       template: 'template.html',
       filename: 'index.html',
+      chunks: ['index'],
       hash: true,
       // minify: {    // 先不压缩html
       //   collapseWhitespace: true,
@@ -131,6 +137,13 @@ module.exports = {
       //   removeStyleLinkTypeAttributes: true,
       //   useShortDoctype: true
       // }
+    }),
+    new HtmlWebpackPlugin({
+      title: '列表页',
+      template: 'template.html',
+      filename: 'list.html',
+      chunks: ['list'],
+      hash: true,
     }),
     new MiniCssExtracPlugin({
       filename: 'css/bundle.[hash:8].css',      // 注意 css 前边没有斜线
