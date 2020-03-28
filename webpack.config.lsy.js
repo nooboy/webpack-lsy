@@ -7,8 +7,14 @@ const autoprefixer = require('autoprefixer');
 const OptimizeCss = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+// 小插件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+
 module.exports = {
   mode: 'development',
+  devtool: 'inline-source-map',   // 很快定位识别到错误或警告的文件代码
   // entry: './src/pages/Index/index.js',      // 单页入口
   entry: {
     index: './src/pages/Index/index.js',
@@ -123,6 +129,11 @@ module.exports = {
   },
 
   plugins: [
+    // new CleanWebpackPlugin(),   // 自动清空dist目录下文件
+    new CopyWebpackPlugin([
+      { from: './src/doc', to: './doc'},    // 目标目录是dist下的doc
+    ]),
+    new webpack.BannerPlugin('Author: lsy'),  // 打包的js文件头部加备注
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'template.html',

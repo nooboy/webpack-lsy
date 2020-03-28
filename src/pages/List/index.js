@@ -6,4 +6,8 @@ insertElement({
   content: '列表页',
 });
 
+// consolee.log('这是错误代码');   // inline-source-map测试
+
+
+
 
