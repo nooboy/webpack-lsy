@@ -35,6 +35,20 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     compress: true,
+    // 1. 跨域：代理
+    // proxy: {
+    ////   '/api/list': 'http://localhost:3001',
+    //   '/api':{
+    //     target:'http://localhost:3001',
+    //     pathRewrite: { '/api':'' } // 把/api 替换为空
+    //   }
+    // },
+    // 2. 跨域：模拟数据
+    // before (app) {
+    //   app.get('/api/list', (req, res) => {
+    //     res.json({ data: '模式数据方式解决跨域' })
+    //   })
+    // }
   },  
   externals: {
     // 'jquery': 'jQuery'
