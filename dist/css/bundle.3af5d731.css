@@ -1,0 +1,23 @@
+/*! Author: lsy */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body .hello-world {
+  color: red;
+  transform: rotate(45deg);
+  text-align: center;
+  margin: 40px 0;
+}
+body .test-pic {
+  border: 1px solid green;
+  width: 200px;
+  height: 200px;
+  background: url(http://lsypic.com/img/799cffe49a8bc8c79a8c699c01a390ef.jpg) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tbW9uL3N0eWxlLmNzcyIsIndlYnBhY2s6Ly8vLi9zcmMvcGFnZXMvSW5kZXgvaW5kZXgubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7QUFDQTtBQUNBO0FBQ0E7OztBQ0hBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6ImNzcy9idW5kbGUuM2FmNWQ3MzEuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiKiB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMDtcbn1cblxuIiwiYm9keSAuaGVsbG8td29ybGQge1xuICBjb2xvcjogcmVkO1xuICB0cmFuc2Zvcm06IHJvdGF0ZSg0NWRlZyk7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiA0MHB4IDA7XG59XG5ib2R5IC50ZXN0LXBpYyB7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGdyZWVuO1xuICB3aWR0aDogMjAwcHg7XG4gIGhlaWdodDogMjAwcHg7XG4gIGJhY2tncm91bmQ6IHVybChodHRwOi8vbHN5cGljLmNvbS9pbWcvNzk5Y2ZmZTQ5YThiYzhjNzlhOGM2OTljMDFhMzkwZWYuanBnKSAwIDAgbm8tcmVwZWF0O1xuICBiYWNrZ3JvdW5kLXNpemU6IDEwMCUgMTAwJTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0=*/
