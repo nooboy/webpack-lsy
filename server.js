@@ -3,10 +3,10 @@ const express = require('express');
 const app = express();
 
 app.get('/api/list', (req, res) => {
-  res.json({ data: '代理方式解决跨域' })
+  res.json({ data: '代理方式解决跨域' });
 });
 
-app.listen(3001, function () {
+app.listen(3001, function() {
   console.log('Server listening on port 3001...');
 });
 

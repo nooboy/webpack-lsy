@@ -23,10 +23,11 @@ fn();
 // class语法测试，es7 => es5
 class FC {
   name = 'fc';
-  getName () {
+  getName() {
     return this.name;
   }
 }
+
 const fc = new FC('This is fc name');
 console.log('fc: ', fc);
 

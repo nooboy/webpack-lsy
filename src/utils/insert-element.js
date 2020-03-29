@@ -1,4 +1,4 @@
-export default function insertElement ({
+export default function insertElement({
   element = null,
   className = '',
   content = '',
@@ -6,7 +6,7 @@ export default function insertElement ({
   target = document.body,
 } = {}) {
   const frag = document.createDocumentFragment();
-  for (let i = 0; i < nums; i++) {
+  for (let i=0; i<nums; i++) {
     const ele = document.createElement(element);
     ele.className = className;
     ele.innerText =  content;
@@ -14,4 +14,3 @@ export default function insertElement ({
   }
   target.appendChild(frag);
 }
-

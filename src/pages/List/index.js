@@ -18,3 +18,9 @@ ajax({
   url: '/api/list'
 });
 
+// 环境变量
+console.log('---PRODUCTION: ', PRODUCTION ? 'pro' : 'dev');   // pro
+console.log('typeof PRODUCTION: ', typeof PRODUCTION);
+// console.log(typeof VERSIONS);
+// console.log(typeof BROWSER_SUPPORTS_HTML5);
+// console.log(typeof TWO);

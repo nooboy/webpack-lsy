@@ -49,13 +49,13 @@ module.exports = {
     //     res.json({ data: '模式数据方式解决跨域' })
     //   })
     // }
-  },  
+  },
   externals: {
     // 'jquery': 'jQuery'
   },
 
   resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],  // 告诉 webpack 解析模块时应该搜索的目录
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],  // 告诉 webpack 解析模块时应该搜索的目录
     extensions: ['.js', '.jsx', '.css', '.json'],   // 自动解析确定的扩展
     alias: {
       '@src': path.resolve(__dirname, 'src'),
@@ -118,9 +118,9 @@ module.exports = {
             options: {
               presets: ['@babel/preset-env'],
               plugins: [
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-                ["@babel/plugin-transform-runtime"],
+                ['@babel/plugin-proposal-decorators', { 'legacy': true }],
+                ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+                ['@babel/plugin-transform-runtime'],
               ]
             }
           }
@@ -160,6 +160,13 @@ module.exports = {
       { from: './src/doc', to: './doc'},    // 目标目录是dist下的doc
     ]),
     new webpack.BannerPlugin('Author: lsy'),  // 打包的js文件头部加备注
+    new webpack.DefinePlugin({        // 定义环境变量
+      PRODUCTION: JSON.stringify(true),
+      VERSIONS: JSON.stringify('5fa3b9'),
+      BROWSER_SUPPORTS_HTML5: true,
+      TWO: '1+1',
+      'typeof window': JSON.stringify('object')
+    }),
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'template.html',
@@ -169,7 +176,7 @@ module.exports = {
       // minify: {    // 先不压缩html
       //   collapseWhitespace: true,
       //   removeComments: true,
-      //   removeRedundantAttributes: true,       
+      //   removeRedundantAttributes: true,
       //   removeScriptTypeAttributes: true,
       //   removeStyleLinkTypeAttributes: true,
       //   useShortDoctype: true
@@ -199,4 +206,4 @@ module.exports = {
     ]
   }
 
-}
+};
