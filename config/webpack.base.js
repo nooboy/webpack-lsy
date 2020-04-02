@@ -4,6 +4,7 @@ const MiniCssExtracPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const Happypack = require('happypack');
 
 const { NODE_ENV } = process.env;
 const isProd  = NODE_ENV === 'prod';
@@ -82,19 +83,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|dist|lib)/,
         include: [path.resolve(__dirname, '../src')],
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: [
-                ['@babel/plugin-proposal-decorators', { 'legacy': true }],
-                ['@babel/plugin-proposal-class-properties', { 'loose': true }],
-                ['@babel/plugin-transform-runtime'],
-              ]
-            }
-          }
-        ]
+        use: ['Happypack/loader?id=js'],      // happypack测试有6978ms=>3528ms
       },
 
       // 暴露第三方模块到全局变量，这种方式太费事，不建议使用
@@ -168,18 +157,36 @@ module.exports = {
       chunkFilename: 'list',
     }),
 
-    new webpack.DllReferencePlugin({
-      // context: __dirname,
-      // name: path.resolve(__dirname, '../lib', 'dll_vendor.js'),
-      name: 'vendor',
-      // manifest: path.resolve(__dirname, '../lib', 'manifest.json'),
-      manifest: require('../lib/vendor-manifest.json'),
-    }),
+    // new webpack.DllReferencePlugin({
+    //   // context: __dirname,
+    //   // name: path.resolve(__dirname, '../lib', 'dll_vendor.js'),
+    //   name: 'vendor',
+    //   // manifest: path.resolve(__dirname, '../lib', 'manifest.json'),
+    //   manifest: require('../lib/vendor-manifest.json'),
+    // }),
 
     // new webpack.ProvidePlugin({
     //   'React': 'react',
     //   'ReactDOM': 'react-dom'
     // }),
+
+    new Happypack({
+      id: 'js',
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              ['@babel/plugin-proposal-decorators', { 'legacy': true }],
+              ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+              ['@babel/plugin-transform-runtime'],
+            ]
+          }
+        }
+      ],
+      threads: 2, // 默认是3
+    }),
 
   ],
 
