@@ -9,7 +9,7 @@ module.exports = merge(base, {
   mode: 'production',
 
   plugins: [
-    new CleanWebpackPlugin(),   // 自动清空dist目录下文件
+    // new CleanWebpackPlugin(),   // 自动清空dist目录下文件
   ],
 
   optimization: {       // 优化项

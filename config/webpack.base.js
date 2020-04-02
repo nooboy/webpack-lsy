@@ -12,17 +12,19 @@ module.exports = {
   // entry: './src/pages/Home/index.js',      // 单页入口
   entry: {
     home: path.resolve(__dirname, '../src/pages/Home/index.js'),
-    list: path.resolve(__dirname, '../src/pages/List/index.js'),
+    list: path.resolve(__dirname, '../src/pages/List/index.jsx'),
   },
   output: {
     // filename: 'bundle.[hash:6].js',      // 单页面
     filename: '[name]/index.[hash:6].js',   // 多页面应用不能再用指定的名称
     path: path.resolve(__dirname,  '../dist'),
-    publicPath: 'http://lsy.com',
+    // publicPath: 'http://lsy.com',
   },
 
   externals: {
     // 'jquery': 'jQuery'
+    // 'react': 'react',
+    // 'react-dom': 'react-dom'
   },
 
   resolve: {
@@ -38,6 +40,9 @@ module.exports = {
   },
 
   module: {
+    // noParse: /jquery|lodash/,  //接收正则、函数，不去解析这两个库的依赖
+    noParse: content => /jquery|lodash/i.test(content),
+
     rules: [
       {
         test: /\.(less|sass|css)$/,
@@ -60,8 +65,8 @@ module.exports = {
       },
 
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules|dist/,
         include: [path.resolve(__dirname, '../src')],
         use: [
           {
@@ -74,14 +79,14 @@ module.exports = {
       },
 
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|dist|lib)/,
         include: [path.resolve(__dirname, '../src')],
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env'],
+              presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [
                 ['@babel/plugin-proposal-decorators', { 'legacy': true }],
                 ['@babel/plugin-proposal-class-properties', { 'loose': true }],
@@ -125,17 +130,18 @@ module.exports = {
       VERSIONS: JSON.stringify('5fa3b9'),
       BROWSER_SUPPORTS_HTML5: true,
       TWO: '1+1',
-      'typeof window': JSON.stringify('object')
+      'typeof window': JSON.stringify('object'),
     }),
     new CopyWebpackPlugin([
       { from: './src/doc', to: './doc' },    // 目标目录是dist下的doc
     ]),
     new webpack.BannerPlugin('Author: lsy'),  // 打包的js文件头部加备注
+    new webpack.IgnorePlugin(/\.\/locale$/, /moment$/),
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'template.html',
       filename: 'home/index.html',
-      chunks: ['home'],
+      chunks: ['home', 'common'],
       hash: true,
       // minify: {    // 先不压缩html
       //   collapseWhitespace: true,
@@ -150,7 +156,7 @@ module.exports = {
       title: '列表页',
       template: 'template.html',
       filename: 'list/index.html',
-      chunks: ['list'],
+      chunks: ['list', 'common'],
       hash: true,
     }),
     new MiniCssExtracPlugin({
@@ -162,7 +168,24 @@ module.exports = {
       chunkFilename: 'list',
     }),
 
+    new webpack.DllReferencePlugin({
+      // context: __dirname,
+      // name: path.resolve(__dirname, '../lib', 'dll_vendor.js'),
+      name: 'vendor',
+      // manifest: path.resolve(__dirname, '../lib', 'manifest.json'),
+      manifest: require('../lib/vendor-manifest.json'),
+    }),
+
+    // new webpack.ProvidePlugin({
+    //   'React': 'react',
+    //   'ReactDOM': 'react-dom'
+    // }),
+
   ],
+
+  optimization: {
+
+  },
 
 };
 

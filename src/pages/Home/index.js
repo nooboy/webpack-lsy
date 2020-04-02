@@ -1,18 +1,31 @@
 import '@babel/polyfill';
+
+import React from 'react';
+import ReactDOM, { render } from 'react-dom';
+
+import insertElement from '@utils/insert-element.js';
+
 import './index.less';
 
-function component () {
-  const frag = document.createDocumentFragment();
+// function component () {
+//   const frag = document.createDocumentFragment();
 
-  const div1 = document.createElement('div');
-  div1.className = 'hello-world';
-  div1.innerHTML = 'Hello word';
+//   const div1 = document.createElement('div');
+//   div1.className = 'hello-world';
+//   div1.innerHTML = 'Hello word';
 
-  frag.appendChild(div1);
-  return frag;
-}
+//   frag.appendChild(div1);
+//   return frag;
+// }
+// document.body.appendChild(component());
 
-document.body.appendChild(component());
+insertElement({
+  element: 'div',
+  className: 'hello-world',
+  content: 'hello world',
+  nums: 1,
+  target: document.body,
+});
 
 // 箭头函数语法测试：es6 => es5
 const fn = () => {
@@ -69,3 +82,12 @@ document.body.appendChild(img);
 const picDiv = document.createElement('div');
 picDiv.className = 'test-pic';
 document.body.appendChild(picDiv);
+
+
+// console.log('距离当前时间：', moment().endOf('day').fromNow());
+const Comp = () => {
+  return <h5>首页渲染的react内容</h5>;
+};
+
+ReactDOM.render(<Comp/>, document.getElementById('root'));
+

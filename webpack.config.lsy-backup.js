@@ -17,8 +17,8 @@ module.exports = {
   devtool: 'inline-source-map',   // 很快定位识别到错误或警告的文件代码
   // entry: './src/pages/Index/index.js',      // 单页入口
   entry: {
-    index: './src/pages/Index/index.js',
-    list: './src/pages/List/index.js',
+    home: './src/pages/Home/index.js',
+    list: './src/pages/List/index.jsx',
   },
   output: {
     // filename: 'bundle.[hash:8].js',     // 单页面
@@ -109,14 +109,14 @@ module.exports = {
       },
 
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         include: [path.resolve(__dirname, 'src')],
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env'],
+              presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [
                 ['@babel/plugin-proposal-decorators', { 'legacy': true }],
                 ['@babel/plugin-proposal-class-properties', { 'loose': true }],
@@ -139,7 +139,7 @@ module.exports = {
         use: {
           loader: 'url-loader',   // 把图片转为 base64 位
           options: {
-            limit: 10,
+            limit: 8192 * 1000,
             outputPath: '/img/',
             publicPath: 'http://lsypic.com/img',  // 指定图片服务器，先build下
           }
@@ -170,8 +170,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'template.html',
-      filename: 'index.html',
-      chunks: ['index'],
+      filename: 'home.html',
+      chunks: ['home'],
       hash: true,
       // minify: {    // 先不压缩html
       //   collapseWhitespace: true,

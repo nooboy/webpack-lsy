@@ -11,7 +11,8 @@
     "watch1": "webpack --watch",
     "server": "node server.js",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --color --config config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=prod webpack --color --config config/webpack.prod.js"
+    "build": "cross-env NODE_ENV=prod webpack --color --config config/webpack.prod.js",
+    "vendor": "cross-env NODE_ENV=prod webpack --color --config config/webpack.vendor.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -20,7 +21,9 @@
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "autoprefixer": "^9.7.5",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
@@ -49,6 +52,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "@babel/runtime": "^7.9.2"
+    "@babel/runtime": "^7.9.2",
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

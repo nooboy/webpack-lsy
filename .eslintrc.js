@@ -1,4 +1,28 @@
 module.exports  =  {
+    'env': {
+        'browser': true,
+        'node': true,
+        'commonjs': true,
+        'amd': true,
+        'jquery': true,
+        'es6': true,
+        'shared-node-browser': true
+    },
+    'globals': {
+      'process': true,
+      '__dirname': true,
+      'window': true,
+      'document': true,
+      'ActiveXObject': true,
+      'PRODUCTION': true,
+      'VERSIONS': true,
+      'BROWSER_SUPPORTS_HTML5': true,
+      'TWO': true,
+      'React': true,
+      'ReactDOM': true,
+      '$': true,
+    },
+    'parser': 'babel-eslint',
     'parserOptions': {
         'ecmaVersion': 9,
         'sourceType': 'module',
@@ -8,6 +32,8 @@ module.exports  =  {
           'jsx': true
         }
     },
+    'plugins': [
+    ],
     'rules': {
         'constructor-super': 2,
         'for-direction': 2,
@@ -115,7 +141,7 @@ module.exports  =  {
       'space-before-blocks': 2, // 不以新行开始的块{前面要不要有空格
       'block-spacing': [2, 'always'],
       // 'space-before-function-paren': [2, 'always'], // 函数定义时括号前面要不要有空格
-      'space-in-parens': [2, 'never'], // 小括号里面要不要有空格
+      // 'space-in-parens': [2, 'never'], // 小括号里面要不要有空格
       'spaced-comment': [0, 'always',
         { 'exceptions': ['-', '*', '+']
         }], // 注释风格要不要有空格什么的
@@ -126,17 +152,5 @@ module.exports  =  {
       // 'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
 
     },
-    'env': {
-        'browser': true,
-        'node': true,
-        'commonjs': true,
-        'amd': true,
-        'jquery': true,
-        'es6': true,
-        'shared-node-browser': true
-    },
-    'globals': {
-      'ActiveXObject': true,
-      'PRODUCTION': true
-    }
+
 }
