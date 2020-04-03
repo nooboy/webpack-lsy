@@ -4,8 +4,15 @@ import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 
 import insertElement from '@utils/insert-element.js';
+import { printMe } from '@utils/print-me.js';
+import { printHer } from '@utils/print-her';
+// import jquery from 'jquery';
+// import moment from 'moment';
 
 import './index.less';
+
+printMe();
+printHer();
 
 // function component () {
 //   const frag = document.createDocumentFragment();

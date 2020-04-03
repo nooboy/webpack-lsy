@@ -1,4 +1,4 @@
 export function printHer () {
-  console.log('print her name');
+  console.log('----------her name is zhang');
 }
 

@@ -24,11 +24,11 @@ ajax({
 });
 
 // 环境变量
-console.log('---PRODUCTION: ', PRODUCTION ? 'pro' : 'dev');   // pro
-console.log('typeof PRODUCTION: ', typeof PRODUCTION);
-console.log(typeof VERSIONS);
-console.log(typeof BROWSER_SUPPORTS_HTML5);
-console.log(typeof TWO);
+// console.log('---PRODUCTION: ', PRODUCTION ? 'pro' : 'dev');   // pro
+// console.log('typeof PRODUCTION: ', typeof PRODUCTION);
+// console.log(typeof VERSIONS);
+// console.log(typeof BROWSER_SUPPORTS_HTML5);
+// console.log(typeof TWO);
 
 // console.log('距离当前时间：', moment().endOf('day').fromNow());
 const Comp = () => {

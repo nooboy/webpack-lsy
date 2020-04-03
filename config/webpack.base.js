@@ -114,13 +114,13 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({        // 定义环境变量
-      PRODUCTION: JSON.stringify(true),
-      VERSIONS: JSON.stringify('5fa3b9'),
-      BROWSER_SUPPORTS_HTML5: true,
-      TWO: '1+1',
-      'typeof window': JSON.stringify('object'),
-    }),
+    // new webpack.DefinePlugin({        // 定义环境变量
+    //   PRODUCTION: JSON.stringify(true),
+    //   VERSIONS: JSON.stringify('5fa3b9'),
+    //   BROWSER_SUPPORTS_HTML5: true,
+    //   TWO: '1+1',
+    //   'typeof window': JSON.stringify('object'),
+    // }),
     new CopyWebpackPlugin([
       { from: './src/doc', to: './doc' },    // 目标目录是dist下的doc
     ]),
@@ -191,7 +191,22 @@ module.exports = {
   ],
 
   optimization: {
-
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          chunks: 'initial',
+          minSize: 0,
+          minChunks: 2,
+        },
+        vendor: {
+          priority: 1,
+          test: /node_modules/,
+          chunks: 'initial',
+          minSize: 0,
+          minChunks: 2,
+        }
+      },
+    }
   },
 
 };
