@@ -17,6 +17,19 @@ insertElement({
   content: '列表页',
 });
 
+
+insertElement({
+  element: 'button',
+  className: 'button1',
+  content: '懒加载测试',
+  event: 'click',
+  eventHandler () {
+    import('@utils/lazyfile.js').then(res => {
+      console.log('===lazyfile cnt: ', res.default);
+    });
+  }
+});
+
 // consolee.log('这是错误代码');   // inline-source-map测试
 
 ajax({
