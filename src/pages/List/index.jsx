@@ -9,7 +9,14 @@ import { printHer } from '@utils/print-her';
 // import moment from 'moment';
 
 printMe();
-printHer();
+
+if (module.hot) {
+  module.hot.accept('@utils/print-her.js', () => {
+    let { printHer } = require('@utils/print-her.js');
+    console.error('print-her文件更新了，最新内容是：');
+    printHer();
+  });
+}
 
 insertElement({
   element: 'div',

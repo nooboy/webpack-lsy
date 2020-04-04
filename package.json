@@ -8,7 +8,7 @@
   "scripts": {
     "dev1": "webpack-dev-server --color --config webpack.config.lsy.js",
     "build1": "webpack --config webpack.config.lsy.js",
-    "watch1": "webpack --watch",
+    "watch": "webpack --watch",
     "server": "node server.js",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --color --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=prod webpack --color --config config/webpack.prod.js",

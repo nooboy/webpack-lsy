@@ -188,6 +188,8 @@ module.exports = {
       threads: 2, // 默认是3
     }),
 
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 
   optimization: {

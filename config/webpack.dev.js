@@ -9,10 +9,11 @@ module.exports = merge(base, {
     progress: true,
     contentBase: '../dist',
     // open: true,
+    hot: true,
     inline: true,
     port: 3000,
     historyApiFallback: true,
-    compress: true,
+    compress: true,   // 是否开启webpack服务端压缩
     // 1. 跨域：代理
     proxy: {
       '/api/list': 'http://localhost:3001',
